@@ -2,8 +2,7 @@
 var MaMRM = (function () {
     var tiles;
     var boxes = ['DWT', 'SR'];
-    var usedTiles;
-    //var tiles = [['glass', 'glass'], ['glass', 'glass']];
+    var usedTiles = [];
     var isOddMap = 0;
 
     function isOdd(n) {
@@ -23,7 +22,12 @@ var MaMRM = (function () {
             }
         }
         
-        return boxes[game.rnd.integerInRange(0, boxes.length - 1)] + nr.toString();
+        var tileToUse = boxes[game.rnd.integerInRange(0, boxes.length - 1)] + nr.toString();
+        while (usedTiles.indexOf(tileToUse) > 0) {
+            tileToUse = getRandomTile(game);
+        }
+        usedTiles.push(tileToUse);
+        return tileToUse;
     };
 
     function revealTile(button) {
@@ -32,9 +36,9 @@ var MaMRM = (function () {
         tiles.remove(button);
         var tile = tiles.create(-500, -500, getRandomTile(this.game));
         tile.anchor.setTo(0.5, 0.5);
-        tile.scale.setTo(0.2, 0.2);
-        this.game.add.tween(tile.position).to({ x: tileX, y: tileY }, 1000, Phaser.Easing.Bounce.Out, true);
-        this.game.add.tween(tile.scale).to({ x: 1, y: 1 }, 1000, Phaser.Easing.Bounce.Out, true);
+        tile.scale.setTo(3, 3);
+        this.game.add.tween(tile.position).to({ x: tileX, y: tileY }, 1500, Phaser.Easing.Exponential.Out, true);
+        this.game.add.tween(tile.scale).to({ x: 1, y: 1 }, 1500, Phaser.Easing.Exponential.Out, true);
     }
 
     function MaMRM() {
