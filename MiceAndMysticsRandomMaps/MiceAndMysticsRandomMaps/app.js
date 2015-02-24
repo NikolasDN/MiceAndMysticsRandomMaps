@@ -4,12 +4,13 @@ var MaMRM = (function () {
     var boxes = ['DWT', 'SR'];
     var usedTiles = [];
     var isOddMap = 0;
+    //var text;
 
     function isOdd(n) {
         return (Math.abs(n) % 2 == 1);
     }
 
-    function getRandomTile(game) {
+    function getRandomTileWithoutCheck(game) {
         var nr = game.rnd.integerInRange(1, 16);
         if (isOddMap == 0) {
             while (!isOdd(nr)) {
@@ -21,12 +22,19 @@ var MaMRM = (function () {
                 nr = game.rnd.integerInRange(1, 16);
             }
         }
-        
-        var tileToUse = boxes[game.rnd.integerInRange(0, boxes.length - 1)] + nr.toString();
+
+        return boxes[game.rnd.integerInRange(0, boxes.length - 1)] + nr.toString();
+    }
+
+    function getRandomTile(game) {
+        var tileToUse = getRandomTileWithoutCheck(game);
         while (usedTiles.indexOf(tileToUse) > 0) {
-            tileToUse = getRandomTile(game);
+            tileToUse = getRandomTileWithoutCheck(game);
         }
         usedTiles.push(tileToUse);
+        //if (text != null) {
+        //    text.setText(usedTiles.toString());
+        //}
         return tileToUse;
     };
 
@@ -34,11 +42,44 @@ var MaMRM = (function () {
         var tileX = button.x;
         var tileY = button.y;
         tiles.remove(button);
-        var tile = tiles.create(-500, -500, getRandomTile(this.game));
+        var tileName = getRandomTile(this.game);
+        var tile = this.game.make.button((x * 400) + 300, (y * 400) + 200, tileName, revealOtherSide, this);
+        tile.name = tileName;
+        tile.otherName = calculateOtherSide(tileName);
+        tile.flipped = false;
         tile.anchor.setTo(0.5, 0.5);
         tile.scale.setTo(3, 3);
+        tile.angle = 50;
+        tiles.add(tile);
         this.game.add.tween(tile.position).to({ x: tileX, y: tileY }, 1500, Phaser.Easing.Exponential.Out, true);
         this.game.add.tween(tile.scale).to({ x: 1, y: 1 }, 1500, Phaser.Easing.Exponential.Out, true);
+        this.game.add.tween(tile).to({ angle: 0 }, 1500, Phaser.Easing.Exponential.Out, true);
+    }
+
+    function calculateOtherSide(name) {
+        var thenum = parseInt(name.replace(/^\D+/g, ''));
+        var theString = name.replace(/[0-9]/g, '');
+        if (isOdd(thenum)) {
+            return theString + (thenum + 1).toString();
+        }
+        else {
+            return theString + (thenum - 1).toString();
+        }
+    }
+
+    function revealOtherSide(button) {
+        if (button.flipped) {
+            button.flipped = false;
+            button.loadTexture(button.name, 0);
+        }
+        else {
+            button.flipped = true;
+            button.loadTexture(button.otherName, 0);
+        }
+    }
+
+    function refreshMap() {
+        location.reload();
     }
 
     function MaMRM() {
@@ -52,6 +93,7 @@ var MaMRM = (function () {
             }
         }
         this.game.load.spritesheet('glass', 'img/glass.png', 400, 400);
+        this.game.load.image('refresh', 'img/refresh.png');
     };
     MaMRM.prototype.create = function () {
         isOddMap = this.game.rnd.integerInRange(0, 1);
@@ -62,8 +104,13 @@ var MaMRM = (function () {
         for (x = 0; x <= 1; x++) {
             for (y = 0; y <= 1; y++) {
                 if (x == firstX && y == firstY) {
-                    var tile = tiles.create((x * 400) + 300, (y * 400) + 200, getRandomTile(this.game));
+                    var tileName = getRandomTile(this.game);
+                    var tile = this.game.make.button((x * 400) + 300, (y * 400) + 200, tileName, revealOtherSide, this);
+                    tile.name = tileName;
+                    tile.otherName = calculateOtherSide(tileName);
+                    tile.flipped = false;
                     tile.anchor.setTo(0.5, 0.5);
+                    tiles.add(tile);
                 }
                 else
                 {
@@ -72,11 +119,13 @@ var MaMRM = (function () {
                     tiles.add(button);
                 }                
                 
-                //tile.scale.setTo(0.2, 0.2);
-                //this.game.add.tween(tile.scale).to({ x: 1, y: 1 }, 2000, Phaser.Easing.Bounce.Out, true);
             }
         }
+        var refreshButton = this.game.add.button(64, 64, "refresh", refreshMap, this);
+        refreshButton.anchor.setTo(0.5, 0.5);
         
+        //var style = { font: "40px Arial", fill: "#ff0044", align: "center" };
+        //text = this.game.add.text(this.game.world.centerX - 300, 0, text, style);
     };
     MaMRM.prototype.update = function () {
         this.game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
