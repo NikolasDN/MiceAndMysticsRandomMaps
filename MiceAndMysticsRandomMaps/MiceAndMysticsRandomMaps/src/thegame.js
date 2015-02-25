@@ -23,7 +23,7 @@ theGame.prototype = {
             for (y = 0; y <= 1; y++) {
                 if ((x == firstX && y == firstY) | (x == endX && y == endY)) {
                     if (x == firstX && y == firstY) {
-                        var tileName = getRandomTile(this.game);
+                        var tileName = getRandomTile(this.game, null);
                         var tile = this.game.make.button((x * 400) + 300, (y * 400) + 200, tileName, revealOtherSide, this);
                         tile.name = tileName;
                         tile.otherName = calculateOtherSide(tileName);
@@ -37,7 +37,7 @@ theGame.prototype = {
                     }
                     
                     if (x == endX && y == endY) {
-                        var tileName = getRandomTile(this.game);
+                        var tileName = getRandomTile(this.game, null);
                         var tile = this.game.make.button((x * 400) + 300, (y * 400) + 200, tileName, revealOtherSide, this);
                         tile.name = tileName;
                         tile.otherName = calculateOtherSide(tileName);
