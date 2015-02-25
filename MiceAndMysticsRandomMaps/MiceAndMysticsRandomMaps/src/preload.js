@@ -13,6 +13,8 @@ preload.prototype = {
         }
         this.game.load.spritesheet('glass', 'img/glass.png', 400, 400);
         this.game.load.image('refresh', 'img/refresh.png');
+        this.game.load.image('start', 'img/start.png');
+        this.game.load.image('end', 'img/end.png');
     },
     create: function () {
         this.game.state.start("TheGame");

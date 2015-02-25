@@ -35,6 +35,7 @@
     <Content Include="img\DWT\7.png" />
     <Content Include="img\DWT\8.png" />
     <Content Include="img\DWT\9.png" />
+    <Content Include="img\end.png" />
     <Content Include="img\glass.png" />
     <Content Include="img\loading.png" />
     <Content Include="img\refresh.png" />
@@ -54,6 +55,7 @@
     <Content Include="img\SR\7.png" />
     <Content Include="img\SR\8.png" />
     <Content Include="img\SR\9.png" />
+    <Content Include="img\start.png" />
     <Content Include="index.html" />
     <Content Include="node_modules\phaser\build\config.php" />
     <Content Include="node_modules\phaser\build\custom\ninja.js" />

@@ -3,7 +3,10 @@ var tiles;
 var boxes = ['DWT', 'SR'];
 var usedTiles = [];
 var isOddMap = 0;
+var start;
+var end;
 //var text;
+
 
 function isOdd(n) {
     return (Math.abs(n) % 2 == 1);
@@ -75,9 +78,28 @@ function revealOtherSide(button) {
         button.flipped = true;
         button.loadTexture(button.otherName, 0);
     }
+
+    if (start.parentTile == button.name) {
+        if (button.flipped) {
+            start.visible = false;
+        }
+        else {
+            start.visible = true;
+        }
+    }
+
+    if (end.parentTile == button.name) {
+        if (button.flipped) {
+            end.visible = false;
+        }
+        else {
+            end.visible = true;
+        }
+    }
 }
 
-function refreshMap() {
+function refreshMap(game) {
     location.reload();
+    
 }
 
