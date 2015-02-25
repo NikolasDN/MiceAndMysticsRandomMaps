@@ -54,12 +54,30 @@
     <Content Include="img\SR\8.png" />
     <Content Include="img\SR\9.png" />
     <Content Include="index.html" />
+    <Content Include="node_modules\phaser\build\custom\ninja.js" />
+    <Content Include="node_modules\phaser\build\custom\ninja.min.js" />
+    <Content Include="node_modules\phaser\build\custom\p2.js" />
+    <Content Include="node_modules\phaser\build\custom\p2.min.js" />
+    <Content Include="node_modules\phaser\build\custom\phaser-arcade-physics.js" />
+    <Content Include="node_modules\phaser\build\custom\phaser-arcade-physics.min.js" />
+    <Content Include="node_modules\phaser\build\custom\phaser-ninja-physics.js" />
+    <Content Include="node_modules\phaser\build\custom\phaser-ninja-physics.min.js" />
+    <Content Include="node_modules\phaser\build\custom\phaser-no-libs.js" />
+    <Content Include="node_modules\phaser\build\custom\phaser-no-libs.min.js" />
+    <Content Include="node_modules\phaser\build\custom\phaser-no-physics.js" />
+    <Content Include="node_modules\phaser\build\custom\phaser-no-physics.min.js" />
+    <Content Include="node_modules\phaser\build\custom\pixi.js" />
+    <Content Include="node_modules\phaser\build\custom\pixi.min.js" />
+    <Content Include="node_modules\phaser\build\phaser.js" />
+    <Content Include="node_modules\phaser\build\phaser.min.js" />
     <Content Include="web.config">
       <SubType>Designer</SubType>
     </Content>
   </ItemGroup>
   <ItemGroup>
     <Content Include="package.json" />
+    <None Include="Bitterlegacy.pubxml" />
+    <Content Include="node_modules\phaser\build\phaser.map" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>

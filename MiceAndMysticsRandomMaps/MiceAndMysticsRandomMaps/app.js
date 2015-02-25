@@ -28,7 +28,7 @@ var MaMRM = (function () {
 
     function getRandomTile(game) {
         var tileToUse = getRandomTileWithoutCheck(game);
-        while (usedTiles.indexOf(tileToUse) > 0) {
+        while (usedTiles.indexOf(tileToUse) >= 0) {
             tileToUse = getRandomTileWithoutCheck(game);
         }
         usedTiles.push(tileToUse);
