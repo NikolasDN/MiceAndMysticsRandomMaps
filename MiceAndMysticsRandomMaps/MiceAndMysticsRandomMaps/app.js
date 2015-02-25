@@ -51,9 +51,9 @@ var MaMRM = (function () {
         tile.scale.setTo(3, 3);
         tile.angle = 50;
         tiles.add(tile);
-        this.game.add.tween(tile.position).to({ x: tileX, y: tileY }, 1500, Phaser.Easing.Exponential.Out, true);
-        this.game.add.tween(tile.scale).to({ x: 1, y: 1 }, 1500, Phaser.Easing.Exponential.Out, true);
-        this.game.add.tween(tile).to({ angle: 0 }, 1500, Phaser.Easing.Exponential.Out, true);
+        this.game.add.tween(tile.position).to({ x: tileX, y: tileY }, 1000, Phaser.Easing.Exponential.Out, true);
+        this.game.add.tween(tile.scale).to({ x: 1, y: 1 }, 1000, Phaser.Easing.Exponential.Out, true);
+        this.game.add.tween(tile).to({ angle: 0 }, 1000, Phaser.Easing.Exponential.Out, true);
     }
 
     function calculateOtherSide(name) {
@@ -96,6 +96,7 @@ var MaMRM = (function () {
         this.game.load.image('refresh', 'img/refresh.png');
     };
     MaMRM.prototype.create = function () {
+        this.game.scale.startFullScreen(false, false)
         isOddMap = this.game.rnd.integerInRange(0, 1);
         var firstX = this.game.rnd.integerInRange(0, 1);
         var firstY = this.game.rnd.integerInRange(0, 1);

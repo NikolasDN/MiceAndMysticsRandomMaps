@@ -6,7 +6,20 @@
     <title>Mice &amp; Mystics random map maker</title>
     <link rel="stylesheet" href="app.css" type="text/css" />
     <script src="node_modules/phaser/build/phaser.js"></script>
-    <script src="app.js"></script>
+    <!-- <script src="app.js"></script> -->
+    <script src="src/helper.js"></script>
+    <script src="src/boot.js"></script>
+    <script src="src/preload.js"></script>
+    <script src="src/thegame.js"></script>
+    <script>
+        (function () {
+            var game = new Phaser.Game(1000, 800, Phaser.CANVAS, "game");
+            game.state.add("Boot", boot);
+            game.state.add("Preload", preload);
+            game.state.add("TheGame", theGame);
+            game.state.start("Boot");
+        })();
+    </script>
 </head>
 <body>
     <div id="content"></div>
