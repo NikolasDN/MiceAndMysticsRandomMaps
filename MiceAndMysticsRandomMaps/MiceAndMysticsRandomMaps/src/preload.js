@@ -11,6 +11,9 @@ preload.prototype = {
                 this.game.load.image(boxes[j] + i.toString(), 'img/' + boxes[j] + '/' + i.toString() + '.png');
             }
         }
+        for (i = 1; i <= 8; i++) {
+            this.game.load.image('page' + i.toString(), 'img/page' + i.toString() + '.png');
+        }
         this.game.load.spritesheet('glass', 'img/glass.png', 400, 400);
         this.game.load.image('refresh', 'img/refresh.png');
         this.game.load.image('start', 'img/start.png');

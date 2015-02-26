@@ -38,6 +38,14 @@
     <Content Include="img\end.png" />
     <Content Include="img\glass.png" />
     <Content Include="img\loading.png" />
+    <Content Include="img\page1.png" />
+    <Content Include="img\page2.png" />
+    <Content Include="img\page3.png" />
+    <Content Include="img\page4.png" />
+    <Content Include="img\page5.png" />
+    <Content Include="img\page6.png" />
+    <Content Include="img\page7.png" />
+    <Content Include="img\page8.png" />
     <Content Include="img\refresh.png" />
     <Content Include="img\SR\1.png" />
     <Content Include="img\SR\10.png" />

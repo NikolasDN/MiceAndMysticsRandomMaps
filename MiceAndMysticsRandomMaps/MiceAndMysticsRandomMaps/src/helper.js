@@ -5,7 +5,6 @@ var usedTiles = [];
 var isOddMap = 0;
 var start;
 var end;
-//var text;
 
 
 function isOdd(n) {
@@ -15,7 +14,7 @@ function isOdd(n) {
 function checkPaths(newTile, button) {
     var xResult = false;
     var yResult = false;
-    //for (i = 0; i < tiles.length; i++) {
+    
     tiles.forEach(function (item) {
         if (item.name != '') {
             if (button.x > item.x && button.y == item.y) {
@@ -87,9 +86,6 @@ function getRandomTile(game, button) {
     }
     
     usedTiles.push(tileToUse);
-    //if (text != null) {
-    //    text.setText(usedTiles.toString());
-    //}
     return tileToUse;
 };
 

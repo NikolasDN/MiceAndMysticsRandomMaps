@@ -4,7 +4,6 @@
 
 theGame.prototype = {
     create: function () {
-        //this.game.scale.startFullScreen(false, false)
         usedTiles = [];
         isOddMap = this.game.rnd.integerInRange(0, 1);
         var firstX = this.game.rnd.integerInRange(0, 1);
@@ -60,6 +59,12 @@ theGame.prototype = {
             }
         }
 
+        for (i = 1; i <= 8; i++) {
+            var page = this.game.add.sprite(950, (i * 50) - 25, "page" + i.toString());
+            page.scale.setTo(0.5, 0.5);
+            page.anchor.setTo(0.5, 0.5);
+        }
+
         var refreshButton = this.game.add.button(64, 64, "refresh", function () {
             this.game.state.start("TheGame");
         }, this);
@@ -68,7 +73,6 @@ theGame.prototype = {
     update: function () {
         this.game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
         this.game.scale.pageAlignHorizontally = true;
-        //this.game.scale.pageAlignVertically = true;
         this.game.scale.setScreenSize(true);
     }
 }
