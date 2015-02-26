@@ -5,6 +5,7 @@ var usedTiles = [];
 var isOddMap = 0;
 var start;
 var end;
+var pages = 0;
 
 
 function isOdd(n) {
@@ -14,6 +15,7 @@ function isOdd(n) {
 function checkPaths(newTile, button) {
     var xResult = false;
     var yResult = false;
+    var tempPages = 0;
     
     tiles.forEach(function (item) {
         if (item.name != '') {
@@ -21,29 +23,65 @@ function checkPaths(newTile, button) {
                 xResult = checkWestEast(item.name, newTile);
                 if (!xResult) {
                     xResult = checkWestEast(item.otherName, calculateOtherSide(newTile));
+                    if (xResult) {
+                        tempPages += 2;
+                        console.log("2");
+                    }
+                }
+                else {
+                    tempPages += 1;
+                    console.log("1");
                 }
             }
             if (button.x < item.x && button.y == item.y) {
                 xResult = checkWestEast(newTile, item.name);
                 if (!xResult) {
                     xResult = checkWestEast(calculateOtherSide(newTile), item.otherName);
+                    if (xResult) {
+                        tempPages += 2;
+                        console.log("2");
+                    }
+                }
+                else {
+                    tempPages += 1;
+                    console.log("1");
                 }
             }
             if (button.y > item.y && button.x == item.x) {
                 yResult = checkNorthSouth(item.name, newTile);
                 if (!yResult) {
                     yResult = checkNorthSouth(item.otherName, calculateOtherSide(newTile));
+                    if (yResult) {
+                        tempPages += 2;
+                        console.log("2");
+                    }
+                }
+                else {
+                    tempPages += 1;
+                    console.log("1");
                 }
             }
             if (button.y < item.y && button.x == item.x) {
                 yResult = checkNorthSouth(newTile, item.name);
                 if (!yResult) {
                     yResult = checkNorthSouth(calculateOtherSide(newTile), item.otherName);
+                    if (yResult) {
+                        tempPages += 2;
+                        console.log("2");
+                    }
+                }
+                else {
+                    tempPages += 1;
+                    console.log("1");
                 }
             }
         }
     });
     if (xResult == true && yResult == true) {
+        if (pages == 0) {
+            pages = tempPages + 2;
+            console.log(tempPages.toString() + "+2");
+        }
         return true;
     }
     else {
@@ -105,6 +143,12 @@ function revealTile(button) {
     this.game.add.tween(tile.position).to({ x: tileX, y: tileY }, 1000, Phaser.Easing.Exponential.Out, true);
     this.game.add.tween(tile.scale).to({ x: 1, y: 1 }, 1000, Phaser.Easing.Exponential.Out, true);
     this.game.add.tween(tile).to({ angle: 0 }, 1000, Phaser.Easing.Exponential.Out, true);
+
+    if (pages > 0) {
+        var hourglass = this.game.add.sprite(950, (pages * 50) - 25, "hourglass");
+        hourglass.anchor.setTo(0.5, 0.5);
+        hourglass.scale.setTo(0.4, 0.4);
+    }
 }
 
 function calculateOtherSide(name) {

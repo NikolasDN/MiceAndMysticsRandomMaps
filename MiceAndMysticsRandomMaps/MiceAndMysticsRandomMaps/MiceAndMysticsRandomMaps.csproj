@@ -37,6 +37,7 @@
     <Content Include="img\DWT\9.png" />
     <Content Include="img\end.png" />
     <Content Include="img\glass.png" />
+    <Content Include="img\hourglass.png" />
     <Content Include="img\loading.png" />
     <Content Include="img\page1.png" />
     <Content Include="img\page2.png" />

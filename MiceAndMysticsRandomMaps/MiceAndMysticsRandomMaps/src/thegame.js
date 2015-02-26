@@ -4,6 +4,7 @@
 
 theGame.prototype = {
     create: function () {
+        pages = 0;
         usedTiles = [];
         isOddMap = this.game.rnd.integerInRange(0, 1);
         var firstX = this.game.rnd.integerInRange(0, 1);

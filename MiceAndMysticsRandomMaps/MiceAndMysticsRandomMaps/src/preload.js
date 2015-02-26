@@ -18,6 +18,7 @@ preload.prototype = {
         this.game.load.image('refresh', 'img/refresh.png');
         this.game.load.image('start', 'img/start.png');
         this.game.load.image('end', 'img/end.png');
+        this.game.load.image('hourglass', 'img/hourglass.png');
     },
     create: function () {
         this.game.state.start("TheGame");
