@@ -137,11 +137,11 @@ function revealTile(button) {
     tile.otherName = calculateOtherSide(tileName);
     tile.flipped = false;
     tile.anchor.setTo(0.5, 0.5);
-    tile.scale.setTo(3, 3);
+    tile.scale.setTo(10, 10);
     tile.angle = 50;
     tiles.add(tile);
     this.game.add.tween(tile.position).to({ x: tileX, y: tileY }, 1000, Phaser.Easing.Exponential.Out, true);
-    this.game.add.tween(tile.scale).to({ x: 1, y: 1 }, 1000, Phaser.Easing.Exponential.Out, true);
+    this.game.add.tween(tile.scale).to({ x: 3.13, y: 3.13 }, 1000, Phaser.Easing.Exponential.Out, true);
     this.game.add.tween(tile).to({ angle: 0 }, 1000, Phaser.Easing.Exponential.Out, true);
 
     if (pages > 0) {
@@ -191,8 +191,4 @@ function revealOtherSide(button) {
     }
 }
 
-function refreshMap(game) {
-    location.reload();
-    
-}
 

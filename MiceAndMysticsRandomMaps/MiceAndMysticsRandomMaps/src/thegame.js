@@ -29,6 +29,7 @@ theGame.prototype = {
                         tile.otherName = calculateOtherSide(tileName);
                         tile.flipped = false;
                         tile.anchor.setTo(0.5, 0.5);
+                        tile.scale.setTo(3.13, 3.13);
                         tiles.add(tile);
 
                         start = this.game.add.sprite((x * 400) + 300 - 100 + (this.game.rnd.integerInRange(0, 1) * 200), (y * 400) + 200 - 100 + (this.game.rnd.integerInRange(0, 1) * 200), "start");
@@ -43,6 +44,7 @@ theGame.prototype = {
                         tile.otherName = calculateOtherSide(tileName);
                         tile.flipped = false;
                         tile.anchor.setTo(0.5, 0.5);
+                        tile.scale.setTo(3.13, 3.13);
                         tiles.add(tile);
 
                         end = this.game.add.sprite((x * 400) + 300 - 100 + (this.game.rnd.integerInRange(0, 1) * 200), (y * 400) + 200 - 100 + (this.game.rnd.integerInRange(0, 1) * 200), "end");
